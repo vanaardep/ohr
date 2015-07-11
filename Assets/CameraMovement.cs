@@ -5,6 +5,8 @@ public class CameraMovement : MonoBehaviour {
 
 	Transform target;
 
+
+
 	// Use this for initialization
 	void Start () {
 		target = GameObject.Find ("Player").transform;
