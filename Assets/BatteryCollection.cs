@@ -4,10 +4,13 @@ using System.Collections;
 public class BatteryCollection : MonoBehaviour {
 
 	private int batteryCount = 0;
+	public Vector2[] positions;
 
 	// Use this for initialization
 	void Start () {
-	
+		int ranNum = Random.Range(0, positions.Length);
+		transform.position = positions [ranNum];
+
 	}
 	
 	// Update is called once per frame

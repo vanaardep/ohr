@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour {
 			//rb.velocity = Vector2.right;
 		}
 		if(Input.GetKey(KeyCode.A)) {
-			transform.Translate(Vector2.left * speed);
+			transform.Translate(-Vector2.right * speed);
 		}
 		if (Input.GetKey (KeyCode.W)) {
 			transform.Translate (Vector2.up * speed);
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			transform.Translate (Vector2.down * speed);
+			transform.Translate (-Vector2.up * speed);
 		}
 	}
 }
