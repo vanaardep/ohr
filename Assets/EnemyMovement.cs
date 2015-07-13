@@ -3,22 +3,14 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
 
-	public GameObject enemy;
-
 	Transform target;
-	float speed = 1;
 
-	// Use this for initialization
+	public float speed = 1;
+
+	// Use this for initializations
 	void Start () {
 		// Find player object
 		target = GameObject.Find ("Player").transform;
-		/*enemy = GameObject.Find ("Enemy");
-
-		// Make enemies
-		for (int i = 0; i < 5; i++) {
-			Instantiate(enemy);
-
-		}*/
 	}
 	
 	// Update is called once per frame
