@@ -14,6 +14,6 @@ public class CameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = target.position + new Vector3 (0, 0, -10);
+		transform.position = target.position + new Vector3 (0, 0, -2);
 	}
 }
