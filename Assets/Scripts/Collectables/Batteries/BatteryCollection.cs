@@ -4,12 +4,12 @@ using System.Collections;
 public class BatteryCollection : MonoBehaviour {
 
 	private int batteryCount = 0;
-	public Vector2[] positions;
+	//public Vector2[] positions;
 
 	// Use this for initialization
 	void Start () {
-		int ranNum = Random.Range(0, positions.Length);
-		transform.position = positions [ranNum];
+		//int ranNum = Random.Range(0, positions.Length);
+		//transform.position = positions [ranNum];
 
 	}
 	
@@ -20,14 +20,14 @@ public class BatteryCollection : MonoBehaviour {
 
 	//Increment battery count and remove battery from the game
 	void OnTriggerEnter2D(Collider2D other) { 
-		if (other.tag == "BatteryCollider") { 
+		//if (other.tag == "BatteryCollider") { 
 			batteryCount += 1; 
 		    Destroy(other.transform.parent.gameObject); //destroys the battery sprite
 			Destroy(other.gameObject); //destroys the sprite's collider
 			Debug.Log("Player touched Battery");
 			Debug.Log (batteryCount);
 
-		} 
+		//} 
 	}
 
 	void OnGUI(){
