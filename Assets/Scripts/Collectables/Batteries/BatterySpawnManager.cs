@@ -8,7 +8,11 @@ public class BatterySpawnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
+		//spawn 3 random batteries in the map
+		batterySpawn ();
+		batterySpawn ();
+		batterySpawn ();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +20,7 @@ public class BatterySpawnManager : MonoBehaviour {
 	
 	}
 
+	//Creates a battery at random spawn location
 	void batterySpawn()
 	{
 		int spawnPointIndex = Random.Range (0, batterySpawnPoints.Length);
