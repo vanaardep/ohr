@@ -29,4 +29,16 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate (-Vector2.up * speed);
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Enemy") {
+			Debug.Log ("ENEMY HHIIIITTTT");
+		} else if (coll.gameObject.tag == "baseCar") {
+			Debug.Log ("CAR HHIIIITTTT");
+		} else {
+			Debug.Log ("BUILDING HHIIIITTTT");
+		}
+		
+	}
 }
