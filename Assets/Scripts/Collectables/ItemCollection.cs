@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 			
-public class BatteryCollection : MonoBehaviour {
+public class ItemCollection : MonoBehaviour {
 
 	private int batteryCount = 0;
-	private int lightbulbCount = 0;
-	//public Vector2[] positions;	
+	private int lightbulbCount = 0;	
 
 	// Use this for initialization
 	void Start () {
-		//int ranNum = Random.Range(0, positions.Length);
-		//transform.position = positions [ranNum];
 
 	}
 	
@@ -32,8 +29,6 @@ public class BatteryCollection : MonoBehaviour {
 		Destroy(other.gameObject); //destroys the sprite's collider
 		Debug.Log("Player touched Battery");
 		Debug.Log (batteryCount);
-
-		//} 
 	}
 
 	void OnGUI(){
