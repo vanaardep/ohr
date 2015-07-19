@@ -23,17 +23,17 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// Move player forward
 		if(Input.GetKey(KeyCode.W)) {
 			transform.Translate(-Vector2.up * speed);
 		}
-		/*if(Input.GetKey(KeyCode.A)) {
-			transform.Translate(-Vector2.right * speed);
-		}
-		if (Input.GetKey (KeyCode.W)) {
-			transform.Translate (Vector2.up * speed);
-		}
-		if (Input.GetKey (KeyCode.S)) {
-			transform.Translate (-Vector2.up * speed);
+
+		// Check if light hits enemy
+		/*Ray ray = new Ray (transform.position, transform.forward);
+		RaycastHit hit;
+
+		if (Physics.Raycast (ray, out hit, 100)) {
+			Debug.Log (hit);
 		}*/
 	}
 
