@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		camera = Camera.main;
+
+		speed = 0.09f;
 	}
 	
 	// Update is called once per frame

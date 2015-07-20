@@ -6,9 +6,9 @@ public class EnemyManager : MonoBehaviour {
 	public GameObject enemy;
 	public float spawntime = 10f;
 	public Transform[] spawnPoints;
+	int numberOfEnemies = 1;
 	
 	void Start () {
-		
 		//This function calls the spawn method repeatedly every 3 seconds
 		InvokeRepeating ("spawn", spawntime, spawntime);
 	}
@@ -24,7 +24,11 @@ public class EnemyManager : MonoBehaviour {
 		}*/
 		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 		Instantiate (enemy, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);
+		numberOfEnemies++;
 
+		if (numberOfEnemies > 5) {
+			CancelInvoke ("spawn");
+		}
 		//Debug.Log ("Spawned enemy");
 	}
 	
