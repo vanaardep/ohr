@@ -35,7 +35,7 @@ public class PlayerBuildTurrets : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.E)) { //Deploy turret type 2
 			Debug.Log("Pressed space");
 			GameObject thisObject = Instantiate(newTurret2, playerPosition, Quaternion.identity) as GameObject; //add tower to list
-			activeTower1.Add(thisObject);
+			activeTower2.Add(thisObject);
 		}
 
 	}
