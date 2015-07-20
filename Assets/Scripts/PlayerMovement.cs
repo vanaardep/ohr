@@ -27,6 +27,15 @@ public class PlayerMovement : MonoBehaviour {
 		if(Input.GetKey(KeyCode.W)) {
 			transform.Translate(-Vector2.up * speed);
 		}
+		if(Input.GetKey(KeyCode.S)) {
+			transform.Translate(Vector2.up * speed);
+		}
+		if(Input.GetKey(KeyCode.A)) {
+			transform.Translate(-Vector2.left * speed);
+		}
+		if(Input.GetKey(KeyCode.D)) {
+			transform.Translate(Vector2.left * speed);
+		}
 
 		// Check if light hits enemy
 		/*Ray ray = new Ray (transform.position, transform.forward);
