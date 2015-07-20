@@ -5,9 +5,9 @@ public class CameraMovement : MonoBehaviour {
 
 	Transform target;
 
-	float minFov  = 15;
-	float maxFov  = 90;
-	float sensitivity  = 10;
+	//float minFov  = 15;
+	//float maxFov  = 90;
+	//float sensitivity  = 10;
 
 	// Use this for initialization
 	void Start () {
