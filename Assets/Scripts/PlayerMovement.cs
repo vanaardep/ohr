@@ -27,6 +27,15 @@ public class PlayerMovement : MonoBehaviour {
 		if(Input.GetKey(KeyCode.W)) {
 			transform.Translate(-Vector2.up * speed);
 		}
+		if(Input.GetKey(KeyCode.S)) {
+			transform.Translate(Vector2.up * speed);
+		}
+		if(Input.GetKey(KeyCode.A)) {
+			transform.Translate(-Vector2.left * speed);
+		}
+		if(Input.GetKey(KeyCode.D)) {
+			transform.Translate(Vector2.left * speed);
+		}
 
 		// Check if light hits enemy
 		/*Ray ray = new Ray (transform.position, transform.forward);
@@ -45,7 +54,8 @@ public class PlayerMovement : MonoBehaviour {
 			
 			//Rotates toward the mouse
 			rb.transform.eulerAngles = new Vector3(0,0,Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x))*Mathf.Rad2Deg - 270);
-			
+
+
 			//Judge the distance from the object and the mouse
 			//distanceFromObject = (Input.mousePosition - camera.WorldToScreenPoint(transform.position)).magnitude;
 			
