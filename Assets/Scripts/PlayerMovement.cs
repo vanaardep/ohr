@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	//public float speed;
 	public Rigidbody2D rb;
-
+	public AudioClip playermoveSound;
 	//Public Vars
 	//public Camera camera;
 	public float speed;
@@ -30,9 +30,8 @@ public class PlayerMovement : MonoBehaviour {
 
 		anim.SetFloat ("playerSpeed", Mathf.Abs (Input.GetAxisRaw ("Horizontal")));
 		anim.SetFloat ("playerSpeed", Mathf.Abs (Input.GetAxisRaw ("Vertical")));
-		
 		// Move player forward
-		if(Input.GetAxisRaw("Vertical") > 0) {
+		if(Input.GetAxisRaw("Vertical") > 0) {	
 			transform.Translate(Vector2.up * speed);
 		}
 		if(Input.GetAxisRaw("Vertical") < 0) {
@@ -62,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
 			
 			//Rotates toward the mouse
 			rb.transform.eulerAngles = new Vector3(0,0,Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x))*Mathf.Rad2Deg - 90);
-			
+		
 			//Judge the distance from the object and the mouse
 			//distanceFromObject = (Input.mousePosition - camera.WorldToScreenPoint(transform.position)).magnitude;
 			

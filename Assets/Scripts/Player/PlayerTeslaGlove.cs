@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerTeslaGlove : MonoBehaviour {
 
 	public bool gloveActive;
-
+	public AudioClip shootSound;
 	private int cooldown;
 
 	// Use this for initialization
@@ -18,6 +18,7 @@ public class PlayerTeslaGlove : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (KeyCode.Q)) {
 			if (cooldown == 0 && gloveActive == false) {
+				SoundManager.instance.PlaySingle(shootSound);
 				this.GetComponent<Light> ().intensity = 100;
 				gloveActive = true;
 				cooldown = 5;
@@ -26,6 +27,7 @@ public class PlayerTeslaGlove : MonoBehaviour {
 		} else {
 			this.GetComponent<Light> ().intensity = 0;
 			gloveActive = false;
+			
 		}
 	}
 
