@@ -2,25 +2,30 @@
 using System.Collections;
 
 public class EnemyMove : MonoBehaviour {
-	
+
+	public AudioClip hurtSound2;
+
 	Transform player;
+	Transform TeslaSpotlight;
 	Transform baseCar;
 	
 	float speed = 1f;
 	float angleSpread = 20;
-	float enemyFreezeTime = 4;
+	float enemyFreezeTime = 5;
 
 	// Distances and light	
-	bool inLight = false;
+	bool frozen = false;
+	bool playingSound = false;
 	float distanceToPlayer;
 	float distanceToCar;
 	Vector3 playerZRotation;
 	Vector3 enemyPosition;
 	Vector3 facing;
-	
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player").transform;
+		TeslaSpotlight = GameObject.Find ("TeslaSpotlight").transform;
 		baseCar = GameObject.Find ("baseCar").transform;
 
 		InvokeRepeating ("checkDistances", 0, 1.0f);
@@ -29,13 +34,34 @@ public class EnemyMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (!inLight) {
+		if (distanceToPlayer <= 25 && ((facing.z - angleSpread) < playerZRotation.z && playerZRotation.z < (facing.z + angleSpread))) {
+			frozen = true;
+			
+			// Are we killing this guy?
+			PlayerTeslaGlove gloveScript = TeslaSpotlight.GetComponent<PlayerTeslaGlove> ();
+			//Debug.Log (gloveScript.gloveActive);
+			
+			if (gloveScript.gloveActive) {
+				// Kill enemy
+				Debug.Log ("Finish Him!!");
+				if (!playingSound) {
+					//playingSound = true;
+					SoundManager.instance.PlaySingle(hurtSound2);
+				}
+
+				Destroy (this.gameObject);
+			}
+		}
+
+		if (!frozen) {
 			// Check if enemy in angle
 			//========================
 			if (distanceToPlayer <= 25 && ((facing.z - angleSpread) < playerZRotation.z && playerZRotation.z < (facing.z + angleSpread))) {
-				inLight = true;
+				frozen = true;
+
+				// Just freeze him
 				Debug.Log ("FREEEEZE BITCH");
-				Invoke("unfreezeEnemy", enemyFreezeTime);
+				Invoke ("unfreezeEnemy", enemyFreezeTime);
 			} 
 			
 			if (distanceToPlayer < distanceToCar) {
@@ -45,7 +71,7 @@ public class EnemyMove : MonoBehaviour {
 				// Move towards car
 				transform.position = Vector3.MoveTowards (transform.position, baseCar.position, speed * Time.deltaTime);
 			}
-		}
+		} 
 	}
 
 	void checkDistances(){
@@ -75,12 +101,12 @@ public class EnemyMove : MonoBehaviour {
 		enemyPosition = this.transform.position;//camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Input.mousePosition.z - camera.transform.position.z));
 		
 		//Rotates toward the mouse
-		facing = new Vector3(0,0,Mathf.Atan2((enemyPosition.y - player.position.y), (enemyPosition.x - player.position.x))*Mathf.Rad2Deg + 90);
+		facing = new Vector3(0,0,Mathf.Atan2((enemyPosition.y - player.position.y), (enemyPosition.x - player.position.x))*Mathf.Rad2Deg + 270);
 		
 		//Debug.Log (facing.z + " VS " + playerZRotation.z);
 	}
 	
 	void unfreezeEnemy () {
-		inLight = false;
+		frozen = false;
 	}
 }

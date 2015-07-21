@@ -4,8 +4,8 @@ using System.Collections;
 public class EnemyManager : MonoBehaviour {
 
 	public GameObject enemy;
-	public float spawntime = 10f;
-	public float startTime = 20f;
+	public float spawntime = 1f;
+	public float startTime = 1f;
 	public Transform[] spawnPoints;
 	int numberOfEnemies = 1;
 	
