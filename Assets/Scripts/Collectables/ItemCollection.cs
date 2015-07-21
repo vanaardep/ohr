@@ -3,8 +3,11 @@ using System.Collections;
 			
 public class ItemCollection : MonoBehaviour {
 
+	public static int maxAmountOfLightMines = 5; // Amount of light mines aloud
+
 	public static int batteryCount = 0;
-	public static int lightbulbCount = 0;	
+	public static int lightbulbCount = 0;
+	public static int lightMineCount = 0;
 	public AudioClip pickupSound;
 
 	// Use this for initialization

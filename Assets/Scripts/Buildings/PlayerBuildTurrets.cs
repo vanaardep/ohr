@@ -8,6 +8,7 @@ public class PlayerBuildTurrets : MonoBehaviour {
 
 	public Transform newTurret1;
 	public Transform newTurret2;
+	public Transform lightMine;
 	public AudioClip buildSound;
 
 	//Variables for onscreen Message
@@ -73,6 +74,23 @@ public class PlayerBuildTurrets : MonoBehaviour {
 				display = true;
 
 			}
+		}
+
+		if(Input.GetKeyUp(KeyCode.F)) { //Deploy Light Mine
+			//Debug.Log("Pressed E");
+			if(ItemCollection.lightMineCount < ItemCollection.maxAmountOfLightMines){
+				GameObject thisObject = Instantiate(lightMine, playerPosition, Quaternion.identity) as GameObject; //add tower to list
+				ItemCollection.lightMineCount++;
+				Debug.Log(ItemCollection.lightMineCount);
+				SoundManager.instance.PlaySingle(buildSound);
+			}
+			else{
+				msg = "Maximum amount of light mines placed";
+				displayTime = 3f;
+				display = true;
+			}
+
+			
 		}
 
 	}
