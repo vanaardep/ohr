@@ -4,11 +4,11 @@ using System.Collections;
 public class SignalLightManager : MonoBehaviour {
 
 	public Light lt;
-
+	public float signalLightLifeTime;
 	// Use this for initialization
 	void Start () {
 		//lt = GetComponent<Light> ();
-
+		Destroy (gameObject, signalLightLifeTime);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
