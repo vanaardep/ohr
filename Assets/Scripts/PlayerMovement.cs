@@ -14,9 +14,11 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 mousePosition;
 	private Vector3 direction;
 	private float distanceFromObject;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		//camera = Camera.main;
 
@@ -25,18 +27,22 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		anim.SetFloat ("playerSpeed", Mathf.Abs (Input.GetAxisRaw ("Horizontal")));
+		anim.SetFloat ("playerSpeed", Mathf.Abs (Input.GetAxisRaw ("Vertical")));
+		
 		// Move player forward
-		if(Input.GetKey(KeyCode.W)) {
-			transform.Translate(-Vector2.up * speed);
-		}
-		if(Input.GetKey(KeyCode.S)) {
+		if(Input.GetAxisRaw("Vertical") > 0) {
 			transform.Translate(Vector2.up * speed);
 		}
-		if(Input.GetKey(KeyCode.A)) {
-			transform.Translate(-Vector2.right * speed);
+		if(Input.GetAxisRaw("Vertical") < 0) {
+			transform.Translate(-Vector2.up * speed);
 		}
-		if(Input.GetKey(KeyCode.D)) {
-			transform.Translate(Vector2.right * speed);
+		if(Input.GetAxisRaw("Horizontal") > 0) {
+			transform.Translate(-Vector2.left * speed);
+		}
+		if(Input.GetAxisRaw("Horizontal") < 0) {
+			transform.Translate(Vector2.left * speed);
 		}
 
 		// Check if light hits enemy
@@ -55,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
 		mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Input.mousePosition.z - Camera.main.transform.position.z));
 			
 			//Rotates toward the mouse
-			rb.transform.eulerAngles = new Vector3(0,0,Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x))*Mathf.Rad2Deg - 270);
+			rb.transform.eulerAngles = new Vector3(0,0,Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x))*Mathf.Rad2Deg - 90);
 			
 			//Judge the distance from the object and the mouse
 			//distanceFromObject = (Input.mousePosition - camera.WorldToScreenPoint(transform.position)).magnitude;
