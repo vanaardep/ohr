@@ -4,16 +4,19 @@ using System.Collections;
 public class SignalLightManager : MonoBehaviour {
 
 	public Light lt;
-
+	private float signalLightLifeTime; //Lifetime of signal light
 	// Use this for initialization
 	void Start () {
 		//lt = GetComponent<Light> ();
+		signalLightLifeTime = 6f;
+		Destroy (gameObject, signalLightLifeTime);
 
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		Debug.Log ("entered radius");
 		Debug.Log (other.gameObject.tag);
+		Debug.Log (other.tag);
 		//if (other.gameObject.tag == "Enemy") { //If enemy enter collision radius turn red + increase intensity
 			lt.color = Color.red;
 			lt.intensity++;

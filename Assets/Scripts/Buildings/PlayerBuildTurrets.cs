@@ -61,6 +61,7 @@ public class PlayerBuildTurrets : MonoBehaviour {
 			{
 				GameObject thisObject = Instantiate(newTurret2, playerPosition, Quaternion.identity) as GameObject; //add tower to list
 				activeTower2.Add(thisObject);
+
 				SoundManager.instance.PlaySingle(buildSound);
 				ItemCollection.lightbulbCount--;
 			}
