@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 
 	private int playerHealth = 10;
+	public AudioClip hurtSound;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour {
         if(coll.gameObject.tag=="Enemy") {
         	if(playerHealth != 0){
     	        playerHealth -= 1;
+    	        SoundManager.instance.PlaySingle(hurtSound); //player getting hurt
         	}
         	else{
         		//GameObject.Destroy("Player");

@@ -8,6 +8,7 @@ public class PlayerBuildTurrets : MonoBehaviour {
 
 	Transform newTurret1;
 	Transform newTurret2;
+	public AudioClip buildSound;
 
 	void Start () {
 
@@ -30,12 +31,14 @@ public class PlayerBuildTurrets : MonoBehaviour {
 			Debug.Log("Pressed space");
 			GameObject thisObject = Instantiate(newTurret1, playerPosition, Quaternion.identity) as GameObject; //add tower to list
 			activeTower1.Add(thisObject);
+			SoundManager.instance.PlaySingle(buildSound);
 		}
 
 		if(Input.GetKeyUp(KeyCode.E)) { //Deploy turret type 2
 			Debug.Log("Pressed space");
 			GameObject thisObject = Instantiate(newTurret2, playerPosition, Quaternion.identity) as GameObject; //add tower to list
 			activeTower2.Add(thisObject);
+			SoundManager.instance.PlaySingle(buildSound);
 		}
 
 	}

@@ -5,6 +5,7 @@ public class ItemCollection : MonoBehaviour {
 
 	private int batteryCount = 0;
 	private int lightbulbCount = 0;	
+	public AudioClip pickupSound;
 
 	// Use this for initialization
 	void Start () {
@@ -21,14 +22,21 @@ public class ItemCollection : MonoBehaviour {
 
 		if (other.tag == "BatteryCollider") { 
 			batteryCount += 1;
+			SoundManager.instance.PlaySingle(pickupSound);
+			Destroy(other.transform.parent.gameObject); //destroys the battery sprite
+			Destroy(other.gameObject); //destroys the sprite's collider
+			Debug.Log("Player touched Battery");
+			Debug.Log (batteryCount);
+
 		} else if (other.tag == "LightbulbCollider") { 
 			lightbulbCount += 1;
-		}
+			SoundManager.instance.PlaySingle(pickupSound);
+			Destroy(other.transform.parent.gameObject); //destroys the battery sprite
+			Destroy(other.gameObject); //destroys the sprite's collider
+			Debug.Log("Player touched Battery");
+			Debug.Log (batteryCount);
 
-	    Destroy(other.transform.parent.gameObject); //destroys the battery sprite
-		Destroy(other.gameObject); //destroys the sprite's collider
-		Debug.Log("Player touched Battery");
-		Debug.Log (batteryCount);
+		}
 	}
 
 	void OnGUI(){
