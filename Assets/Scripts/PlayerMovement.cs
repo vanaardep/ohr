@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	public Rigidbody2D rb;
 
 	//Public Vars
-	public Camera camera;
+	//public Camera camera;
 	public float speed;
 	
 	//Private Vars
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		camera = Camera.main;
+		//camera = Camera.main;
 
 		speed = 0.09f;
 	}
@@ -33,10 +33,10 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate(Vector2.up * speed);
 		}
 		if(Input.GetKey(KeyCode.A)) {
-			transform.Translate(-Vector2.left * speed);
+			transform.Translate(-Vector2.right * speed);
 		}
 		if(Input.GetKey(KeyCode.D)) {
-			transform.Translate(Vector2.left * speed);
+			transform.Translate(Vector2.right * speed);
 		}
 
 		// Check if light hits enemy
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
 		//if (Input.GetButton("Fire2")){
 			
 			//Grab the current mouse position on the screen
-			mousePosition = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Input.mousePosition.z - camera.transform.position.z));
+		mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Input.mousePosition.z - Camera.main.transform.position.z));
 			
 			//Rotates toward the mouse
 			rb.transform.eulerAngles = new Vector3(0,0,Mathf.Atan2((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x))*Mathf.Rad2Deg - 270);

@@ -3,8 +3,8 @@ using System.Collections;
 			
 public class ItemCollection : MonoBehaviour {
 
-	private int batteryCount = 0;
-	private int lightbulbCount = 0;	
+	public static int batteryCount = 0;
+	public static int lightbulbCount = 0;	
 	public AudioClip pickupSound;
 
 	// Use this for initialization
