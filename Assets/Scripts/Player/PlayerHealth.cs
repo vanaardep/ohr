@@ -3,12 +3,12 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
-	private int playerHealth = 10;
+	public static int playerHealth = 10;
 	public AudioClip hurtSound;
 
 	// Use this for initialization
 	void Start () {
-	
+		playerHealth = 10;
 	}
 	
 	// Update is called once per frame

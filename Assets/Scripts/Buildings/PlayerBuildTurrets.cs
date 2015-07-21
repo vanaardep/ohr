@@ -16,7 +16,8 @@ public class PlayerBuildTurrets : MonoBehaviour {
 	private bool display = false;
 
 	void Start () {
-
+		displayTime = 3f;
+		display = false;
 	}
 
 	void Update()

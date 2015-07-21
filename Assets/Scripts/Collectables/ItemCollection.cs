@@ -9,7 +9,8 @@ public class ItemCollection : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		batteryCount = 0;
+		lightbulbCount = 0;	
 	}
 	
 	// Update is called once per frame
