@@ -7,6 +7,7 @@ public class LightMineManager : MonoBehaviour {
 	private bool timeToExplode = false;
 	private int count = 0;
 	void Start () {
+		//ItemCollection.lightMineCount = 0;
 	
 	}
 	void OnTriggerEnter2D(Collider2D other){

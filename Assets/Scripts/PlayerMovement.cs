@@ -38,10 +38,10 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate(-Vector2.up * speed);
 		}
 		if(Input.GetAxisRaw("Horizontal") > 0) {
-			transform.Translate(-Vector2.left * speed);
+			transform.Translate(Vector2.right * speed);
 		}
 		if(Input.GetAxisRaw("Horizontal") < 0) {
-			transform.Translate(Vector2.left * speed);
+			transform.Translate(-Vector2.right * speed);
 		}
 
 		// Check if light hits enemy
